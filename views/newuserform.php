@@ -1,3 +1,10 @@
+<?php
+declare(strict_types=1);
+if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)){
+    header('Location: /superuser/phprouter');
+}
+?>
+
 <form method="post" action="procnewuser">
 First Name: <input type="text" name="fname"/><br />
 Last Name: <input type="text" name="lname"/><br />

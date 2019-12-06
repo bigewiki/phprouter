@@ -35,7 +35,7 @@ if ($qmarkloc !== false )
 $pathvarloc = strpos($request,'/',1);
 if ($pathvarloc !== false)
 {
-    $pathvars = substr($request,$pathvarloc);
+    $pathvars = ltrim(substr($request,$pathvarloc),'/');
     $request = substr($request,0,$pathvarloc);
     echo "$pathvars";
 }

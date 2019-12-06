@@ -2,9 +2,10 @@
 declare(strict_types=1);
 if(!defined('Canary'))
 {
-    die("Direct Access Not Permitted");
+    header('Location: /superuser/phprouter');
 }
 ?>
+
 <html>
 <head>
 <title> Main Page of PHP Router Site</title>

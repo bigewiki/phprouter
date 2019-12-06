@@ -1,5 +1,9 @@
 <?php
 declare(strict_types=1);
+if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)){
+    header('Location: /superuser/phprouter');
+}
+
 function rand_string( int $length ): string 
 {
 	//note, if using this for an url, # ? & and ; are invalid characters
