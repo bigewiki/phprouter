@@ -1,0 +1,17 @@
+body
+{
+	background-color: #acdc32;
+}
+
+h1
+{
+	width: 50%;
+	text-align: center;
+	border-radius: 1em;
+	border-color: #000000;
+	border-width: .2em;
+	border-style: double;
+	padding: .5em;
+	background-color: #ffffff;
+	margin: auto;
+}

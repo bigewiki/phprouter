@@ -1,0 +1,72 @@
+<?php
+declare(strict_types=1);
+define('Canary',True);
+$request = $_SERVER['REQUEST_URI'];
+$method = $_SERVER['REQUEST_METHOD'];
+$basedir = "/coperni/phprouter";
+$request = substr($request,strlen($basedir));
+
+$qmarkloc = strpos($request, "?");
+if ($qmarkloc !== false )
+{
+    # probably not needed
+    # $querystring = substr($request, $qmarkloc);
+    $request = substr($request,0,$qmarkloc);
+}
+
+
+
+if ($method === 'GET')
+{
+	switch ($request)
+	{
+		case '/coperni/phprouter/' :
+		case '/coperni/phprouter' :
+			require __DIR__ . '/views/index.php';
+			break;
+		case '/coperni/phprouter/about' :
+			require __DIR__ . '/views/about.php';
+			break;
+		case '/coperni/phprouter/login' :
+			require __DIR__ . '/views/login.php';
+			break;
+                case '/coperni/phprouter/procform' :
+                    require __DIR__ . '/views/procform.php';
+                    break;
+                case '/coperni/phprouter/showform' :
+                    require __DIR__ . '/views/showform.php';
+                    break;
+		case '/coperni/phprouter/createuser' :
+                    require __DIR__ . '/views/newuserform.php';
+                    break;
+		default:
+                    http_response_code(404);
+                    require __DIR__ . '/views/404.php';
+                    break;
+	}
+}
+elseif ($method === 'POST')
+{
+	//echo "This is a POST REQUEST";
+	switch ($request)
+	{
+		case '/coperni/phprouter/proclogin':
+			require __DIR__ . '/views/proclogin.php';
+			//echo $_POST['username'];
+			break;
+		case '/coperni/phprouter/procnewuser':
+			require __DIR__ . '/views/procnewuser.php';
+			break;
+		default:
+		http_response_code(404);
+		require __DIR__ . '/views/404.php';
+		break;
+	}
+
+}
+else
+{
+	echo "Can not deal with HEAD PUT DELETE methods";
+}
+
+?>
