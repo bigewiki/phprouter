@@ -6,7 +6,7 @@ if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)){
 
 function procnewuser()
 {
-	include_once '../../blurg.inc';
+	include_once '/home/stu/superuser/blurg.inc.php';
 	include_once 'inc/passwordfuncs.inc.php';
 	#include_once 'emailcheck.inc.php';
 	//ARE YOU INSANE!?!?! FILTER THIS FIRST!!!
@@ -57,7 +57,7 @@ function procnewuser()
 	
 	//include '../../blurg.inc';
 		//NOTE: if you call the $password1 above $password, your script is dead
-	$db1 = new mysqli('localhost', 'coperni', $password, 'STUcoperni');
+	$db1 = new mysqli('localhost', 'superuser', $password, 'STUsuperuser');
 
 	if($db1->connect_errno > 0)
 	{

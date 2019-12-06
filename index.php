@@ -67,8 +67,8 @@ if ($method === 'GET')
 		case '/search' :
 			require __DIR__ . '/views/search.php';
 			break;
-		case 'admin' :
-			require __DIR__ . '/views/admin.php';
+		case '/useradmin' :
+			require __DIR__ . '/views/useradmin.php';
 			break;
 		default:
 			http_response_code(404);

@@ -16,6 +16,7 @@ if(!defined('Canary'))
 
 <ul>
 <li><a href="login">Login </a></li>
+<li><a href="useradmin">User Admin</a></li>
 <li><a href="about">About Me</a></li>
 <li><a href="showform">Show GET form</a></li>
 <li><a href="createuser">Create A new user</a></li>

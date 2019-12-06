@@ -6,13 +6,13 @@ if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)){
 
 function checklogin()
 {
-	include_once '../../blurg.inc';
+	include_once '/home/stu/superuser/blurg.inc.php';
 	include_once 'inc/passwordfuncs.inc.php';
 	# VALIDATE THIS YOU MORON!!
 	$email = $_POST['username'];
 	$userpassword = $_POST['loginpass'];
 	
-	$db1 = new mysqli('localhost', 'coperni', $password, 'STUcoperni');
+	$db1 = new mysqli('localhost', 'superuser', $password, 'STUsuperuser');
 	if($db1->connect_errno > 0)
 	{
 		die('Unable to connect to database [' . $db1->connect_error . ']');
