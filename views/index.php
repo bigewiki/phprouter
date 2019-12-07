@@ -6,12 +6,7 @@ if(!defined('Canary'))
 }
 ?>
 
-<html>
-<head>
-<title> Main Page of PHP Router Site</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
-</head>
-<body>
+
 <h1>Main Page</h1>
 
 <ul>
@@ -26,5 +21,3 @@ if(!defined('Canary'))
 <li><a href="search/byisbn">Search By Isbn</a></li>
 </ul>
 
-</body>
-</html>

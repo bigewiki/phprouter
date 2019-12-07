@@ -38,6 +38,16 @@ if ($pathvarloc !== false){
     $request = substr($request,0,$pathvarloc);
 }
 
+?>
+
+<html>
+<head>
+<title> Main Page of PHP Router Site</title>
+<link rel="stylesheet" href="css/main.css" type="text/css" />
+</head>
+<body>
+
+<?php
 
 if ($method === 'GET')
 {
@@ -99,3 +109,6 @@ else
 }
 
 ?>
+
+</body>
+</html>
