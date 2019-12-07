@@ -4,7 +4,7 @@ if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)){
     header('Location: /superuser/phprouter');
 }
 // pull in sqlProcedures
-require_once('sqlprocedures.php');
+require_once('../inc/sqlprocedures.php');
 echo "<h1>Search Page</h1>";
 $options = explode('/',$pathvars);
 // if not already validated should be 
