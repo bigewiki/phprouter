@@ -93,6 +93,11 @@ declare(strict_types=1);
 			case '/procnewuser':
 				require __DIR__ . '/views/procnewuser.php';
 				break;
+			case '/search':
+				$search = $_POST['search'];
+				$parentDir = $_POST['parent-search'];
+				header("Location: ./$parentDir/$search");
+				break;
 			default:
 			http_response_code(404);
 			require __DIR__ . '/views/404.php';
