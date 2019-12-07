@@ -12,9 +12,21 @@ if($_SESSION['loggedIn'] === true){
 	if ($options[0] == "byauthor") {
 		echo "Do search by author stuff";
 	} elseif ($options[0] == "bytitle") {
-		foreach ($SqlProcs->byTitle('leather') as $value) {
-			print_r($value);
+		if(isset($options[1])){
+			foreach ($SqlProcs->byTitle($options[1]) as $arr) {
+				echo "<table>";
+				foreach ($arr as $key => $value) {
+					echo "<tr>";
+					echo "<td>$key</td><td>$value<td>";
+					echo "<tr/>";
+				}
+				echo "</table>";
+			}
+		} else {
+			echo 'please define your search';
 		}
+	} elseif ($options[0] == "bookinfo") {
+
 	} elseif ($options[0] == "byyear") {
 		echo "Do search by year";
 	} elseif ($options[0] == "byisbn") {

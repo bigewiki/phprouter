@@ -1,17 +1,24 @@
-body
-{
-	background-color: #acdc32;
+body {
+  background-color: #acdc32;
 }
 
-h1
-{
-	width: 50%;
-	text-align: center;
-	border-radius: 1em;
-	border-color: #000000;
-	border-width: .2em;
-	border-style: double;
-	padding: .5em;
-	background-color: #ffffff;
-	margin: auto;
+h1 {
+  width: 50%;
+  text-align: center;
+  border-radius: 1em;
+  border-color: #000000;
+  border-width: 0.2em;
+  border-style: double;
+  padding: 0.5em;
+  background-color: #ffffff;
+  margin: auto;
+}
+
+table {
+  margin-bottom: 20px;
+}
+
+table td {
+  border: 1px solid black;
+  padding: 5px 5px 5px 10px;
 }
