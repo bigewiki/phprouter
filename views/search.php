@@ -19,7 +19,7 @@ if($_SESSION['loggedIn'] === true){
 			foreach ($SqlProcs->byTitle($options[1]) as $res) {
 				echo '<tr>';
 				echo '<td>' . $res['book_id'] . '</td>';
-				echo '<td>' . $res['title'] . '</td>';
+				echo '<td><a href="../bookinfo/' . $res['book_id'] . '">'. $res['title'] . '</a></td>';
 				echo '<td>' . $res['isbn'] . '</td>';
 				echo '<td>' . $res['isbn13'] . '</td>';
 				echo '<td>' . $res['pubyear'] . '</td>';
@@ -34,7 +34,7 @@ if($_SESSION['loggedIn'] === true){
 			} else {
 				?>
 				<form action="./" method="POST">
-					<input type="test" name="search"/>
+					<input type="text" name="search"/>
 					<input type="hidden" name="parent-search" value="<?php echo $options[0] ?>"/>
 					<input type="submit" name="submit"/>
 				</form>
@@ -66,12 +66,21 @@ if($_SESSION['loggedIn'] === true){
 				echo "<tr/>";				
 			}
 			echo "</table>";
-		} else {
+		} else if (!isset($options[1]) || empty($options[1])){
 			if(substr($_SERVER['REQUEST_URI'], -1) == "/"){
-				header("Location: ../bytitle");
+				header("Location: ../bookinfo");
 			} else {
-				header("Location: ./bytitle");
+				?>
+				<p>Search by book Id</p>
+				<form action="./" method="POST">
+					<input type="number" value="82" name="search"/>
+					<input type="hidden" name="parent-search" value="<?php echo $options[0] ?>"/>
+					<input type="submit" name="submit"/>
+				</form>
+				<?php
 			}
+		} else {
+			echo "Book Info search must be by numeric id";
 		}
 	} elseif ($options[0] == "byyear") {
 		echo "Do search by year";

@@ -36,20 +36,16 @@ class SqlProcs extends mysqli{
         $query->bind_param('i',$bookId);
         $query->execute();
         $query->bind_result($author_id, $lastname, $firstname, $authorder);
-        if($query->fetch()){
-            while($row = $query->fetch()){
-                // $res[] = $row;
-                $res[] = array(
-                    'author_id' => $author_id,
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'authorder' => $authorder
-                );
-            }
-            return $res;
-        } else {
-            return 'no results';
+        while($row = $query->fetch()){
+            // $res[] = $row;
+            $res[] = array(
+                'author_id' => $author_id,
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'authorder' => $authorder
+            );
         }
+        return $res;
         $query->close();
     }
 
