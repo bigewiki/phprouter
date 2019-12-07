@@ -1,3 +1,4 @@
+-- probably not best to leave this here... can be downloaded and viewed
 DROP PROCEDURE IF EXISTS getBookById;
 -- gets book info by its id
 -- CALL getBookById(82);

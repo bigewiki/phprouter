@@ -31,7 +31,7 @@ class SqlProcs extends mysqli{
         }
     }
 
-    public function byId(int $bookId) {
+    public function authorsById(int $bookId) {
         $query = $this->prepare("CALL getauthorsbybookid(?)");
         $query->bind_param('i',$bookId);
         $query->execute();
@@ -50,8 +50,29 @@ class SqlProcs extends mysqli{
         } else {
             return 'no results';
         }
+        $query->close();
     }
 
+    public function bookById(int $bookId) {
+        $query = $this->prepare("CALL getBookById(?)");
+        $query->bind_param('i',$bookId);
+        $query->execute();
+        $query->bind_result($book_id, $title, $isbn, $isbn13, $pubyear, $pubname);
+        if($query->fetch()){
+            return array(
+                'book_id' => $book_id,
+                'title' => $title,
+                'isbn' => $isbn,
+                'isbn13' => $isbn13,
+                'pubyear' => $pubyear,
+                'pubname' => $pubname
+            );
+        } else {
+            return 'no result';
+        }
+        $query->close();
+    }
+    
 }
 
 $SqlProcs = new SqlProcs($servername, $username, $password, $dbname);

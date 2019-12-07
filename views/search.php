@@ -43,10 +43,21 @@ if($_SESSION['loggedIn'] === true){
 		}
 	} elseif ($options[0] == "bookinfo") {
 		if(isset($options[1]) && !empty($options[1]) && is_numeric($options[1])){
+			$bookInfo = $SqlProcs->bookById(intval($options[1]));
 			echo "Book info for book id $options[1]...";
 			echo "<table>";
+			echo "<tr><td>Book Id</td><td>" . $bookInfo['book_id'] . "</td></tr>";
+			echo "<tr><td>Title</td><td>" . $bookInfo['title'] . "</td></tr>";
+			echo "<tr><td>ISBN</td><td>" . $bookInfo['isbn'] . "</td></tr>";
+			echo "<tr><td>ISBN13</td><td>" . $bookInfo['isbn13'] . "</td></tr>";
+			echo "<tr><td>Year Published</td><td>" . $bookInfo['pubyear'] . "</td></tr>";
+			echo "<tr><td>Publisher Name</td><td>" . $bookInfo['pubname'] . "</td></tr>";
+			echo "</table>";
+			echo "<br/><br/>";
+			// author info
+			echo "<table>";
 			echo "<tr><th>author_id</th><th>firstname</th><th>lastname</th><th>authorder</th></tr>";
-			foreach ($SqlProcs->byId(intval($options[1])) as $res) {
+			foreach ($SqlProcs->authorsById(intval($options[1])) as $res) {
 				echo '<tr>';
 				echo '<td>' . $res['author_id'] . '</td>';
 				echo '<td>' . $res['firstname'] . '</td>';
