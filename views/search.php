@@ -28,13 +28,18 @@ if($_SESSION['loggedIn'] === true){
 			}
 			echo "</table>";
 		} else {
-			?>
+			// trailing forward slashes create trouble
+			if(substr($_SERVER['REQUEST_URI'], -1) == "/"){
+				header("Location: ../".$options[0]);
+			} else {
+				?>
 				<form action="./" method="POST">
 					<input type="test" name="search"/>
 					<input type="hidden" name="parent-search" value="<?php echo $options[0] ?>"/>
 					<input type="submit" name="submit"/>
 				</form>
-			<?php
+				<?php
+			}
 		}
 	} elseif ($options[0] == "bookinfo") {
 		echo "Do search by bookinfo";
