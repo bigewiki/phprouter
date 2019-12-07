@@ -18,7 +18,7 @@ function checklogin()
 		die('Unable to connect to database [' . $db1->connect_error . ']');
 	}
 	
-	$query1 = $db1->prepare("select hashpw from grcustomers where email = ?");
+	$query1 = $db1->prepare("select hashpw, status from grcustomers where email = ?");
 	$query1->bind_param('s',$email);
 
 	$query1->execute();
@@ -26,12 +26,14 @@ function checklogin()
 	$userexists = $query1->num_rows;
 	if ($userexists == 1 )
 	{
-		$query1->bind_result($hashedpw);
+		$query1->bind_result($hashedpw, $status);
 		$row = $query1->fetch();
 		$query1->free_result();
 		if (password_verify($userpassword, $hashedpw))
 		{
 			echo "You have logged in successfully";
+			$_SESSION['loggedIn'] = true;
+			$_SESSION['level'] = $status;
 		}
 		else
 		{

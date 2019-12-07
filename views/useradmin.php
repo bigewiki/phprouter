@@ -7,6 +7,8 @@ if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)){
 //If the user is not logged in at all, redirect them to the login
 if(!$_SESSION['loggedIn']){
     header('Location: /superuser/phprouter/login');
+} else if($_SESSION['level'] !== 'admin'){
+    echo 'You are not an admin';
 }
 //If the user is logged in, but is not admin, give a warning response
 

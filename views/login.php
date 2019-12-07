@@ -3,6 +3,15 @@ declare(strict_types=1);
 if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)){
     header('Location: /superuser/phprouter');
 }
+
+    // get a password hash
+    // $cleanPass = 'mypassword';
+    // $options = [ 'cost' => 16 ];
+    // $hashpw = password_hash($cleanPass, PASSWORD_DEFAULT, $options);
+    // echo "<h2>Hash of password: <br /> $hashpw</h2>";
+    
+    // here a cheap way to set a password in the db, 
+    // update grcustomers set hashpw = 'PASSWORDHASH' WHERE email = 'test@mydomain.com';
 ?>
 
 <!DOCTYPE html>
