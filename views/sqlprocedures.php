@@ -14,7 +14,7 @@ class SqlProcs extends mysqli{
         $query->execute();
         $query->bind_result($book_id, $title, $isbn, $isbn13, $pubyear, $pubname);
         if($query->fetch()){
-            while($row = $query->fetch()){
+            while($row = $query->fetch_assoc()){
                 $res[] = $row;
             }
             return $res;
