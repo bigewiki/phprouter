@@ -42,7 +42,26 @@ if($_SESSION['loggedIn'] === true){
 			}
 		}
 	} elseif ($options[0] == "bookinfo") {
-		echo "Do search by bookinfo";
+		if(isset($options[1]) && !empty($options[1]) && is_numeric($options[1])){
+			echo "Book info for book id $options[1]...";
+			echo "<table>";
+			echo "<tr><th>author_id</th><th>firstname</th><th>lastname</th><th>authorder</th></tr>";
+			foreach ($SqlProcs->byId(intval($options[1])) as $res) {
+				echo '<tr>';
+				echo '<td>' . $res['author_id'] . '</td>';
+				echo '<td>' . $res['firstname'] . '</td>';
+				echo '<td>' . $res['lastname'] . '</td>';
+				echo '<td>' . $res['authorder'] . '</td>';
+				echo "<tr/>";				
+			}
+			echo "</table>";
+		} else {
+			if(substr($_SERVER['REQUEST_URI'], -1) == "/"){
+				header("Location: ../bytitle");
+			} else {
+				header("Location: ./bytitle");
+			}
+		}
 	} elseif ($options[0] == "byyear") {
 		echo "Do search by year";
 	} elseif ($options[0] == "byisbn") {

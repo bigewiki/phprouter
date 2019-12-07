@@ -22,7 +22,29 @@ class SqlProcs extends mysqli{
                     'isbn' => $isbn,
                     'isbn13' => $isbn13,
                     'pubyear' => $pubyear,
-                    'pubname' => $pubname);
+                    'pubname' => $pubname
+                );
+            }
+            return $res;
+        } else {
+            return 'no results';
+        }
+    }
+
+    public function byId(int $bookId) {
+        $query = $this->prepare("CALL getauthorsbybookid(?)");
+        $query->bind_param('i',$bookId);
+        $query->execute();
+        $query->bind_result($author_id, $lastname, $firstname, $authorder);
+        if($query->fetch()){
+            while($row = $query->fetch()){
+                // $res[] = $row;
+                $res[] = array(
+                    'author_id' => $author_id,
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
+                    'authorder' => $authorder
+                );
             }
             return $res;
         } else {
