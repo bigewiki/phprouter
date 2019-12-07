@@ -96,10 +96,7 @@ declare(strict_types=1);
 			case '/search':
 				$search = $_POST['search'];
 				$parentDir = $_POST['parent-search'];
-				echo $search;
-				echo "<br/>";
-				echo $parentDir;
-				// header("Location: ./$parentDir/$search");
+				header("Location: ./$parentDir/$search");
 				break;
 			default:
 			http_response_code(404);
