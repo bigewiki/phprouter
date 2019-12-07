@@ -26,6 +26,6 @@ class SqlProcs extends mysqli{
 }
 
 $SqlProcs = new SqlProcs($servername, $username, $password, $dbname);
-if ($Api->connect_error) {
-    die("Connection failed: " . $Api->connect_error);
+if ($SqlProcs->connect_error) {
+    die("Connection failed: " . $SqlProcs->connect_error);
 }
